@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ngJuncture</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body ng-app="ngJuncture">
+  <div ng-view></div>
+
+  <script>
+    var cssFiles = [
+      'bower_components/typicons/src/font/typicons.css',
+      'dist/css/style.css'
+    ];
+    var cb = function() {
+      for (var i = 0; i < cssFiles.length; i++){
+        var l = document.createElement('link'); l.rel = 'stylesheet';
+        l.href = cssFiles[i];
+        var h = document.getElementsByTagName('title')[0];
+        h.parentNode.insertBefore(l, h);
+      }
+    };
+    var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+    webkitRequestAnimationFrame || msRequestAnimationFrame;
+    if (raf) raf(cb);
+    else window.addEventListener('load', cb);
+  </script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src="dist/build.js"></script>
+</body>
+</html>

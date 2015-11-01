@@ -1,0 +1,32 @@
+<div  class="background fadeIn" ng-style="{'background-image':'url('+backgroundUrl+')'}">
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <h1 class="time">{{time}}</h1>
+      </div>
+      <div class="u-full-width askname" ng-show="askName">
+        <form ng-submit="updateName()">
+          <label>Who are you?</label>
+          <input name="name" ng-model="name" type="text" />
+          <input name="submit" class="button button-login" type="submit" value="submit"/>
+        </form>
+      </div>
+      <div class="row greeting" ng-show="name">
+        <p>{{greeting}}, {{name}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="quote" ng-show="showQuote">
+    <p class="content">{{quote.content}}</p>
+    <p class="source" ng-show="quote.link">-{{quote.source}}<span> <a href="{{quote.link}}">({{quote.year}})</a></span></p>
+    <p class="source" ng-show="!quote.link">-{{quote.source}}<span> ({{quote.year}})</span></p>
+  </div>
+  <div class="settings">
+    <div class="settings-list" ng-show="settingsVisible" class="ng-hide">
+      <ul>
+        <li><button class="button" ng-click="logOut()">Log out</button></li>
+      </ul>
+    </div>
+    <span class="typcn typcn-cog" ng-click="showSettings()"><span>
+  </div>
+</div>
